@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>実験系Wiki</title>
+  <style>
+
+
+  
+
+
+    body { font-family: sans-serif; }  /*基本的触らなーい*/
+    .page { display: none; }  /*基本的触らなーい*/
+    .page.active { display: block; }  /*基本的触らなーい*/
+
+    /*~クラスによる設定~*/
+  .top_1 {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 50px;
+    background-color: #f9f9f9;
+  }
+  .top_1 ::before {
+    content: "";
+    position: absolute;
+    top:-85px; left: -30px; right: -30px; bottom: -90px;
+    background-color: #7a9b65;
+    z-index: -2;
+  }
+  nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  right: -10px;
+  bottom: 0px;
+  background-color: #a8c18a;
+  z-index: -1;
+}
+    /*"終了"~クラスによる設定~"終了"*/
+
+    /*~ナビゲーション設定~*/
+  
+    nav {display: flex; justify-content: center; position: relative;}
+    nav a { text-align: center;/*中央ぞろい*/ background: #a8c18a;/*後ろの色の通常時設定*/  color: rgb(255, 255, 255);/*通常時の文字の色*/ text-decoration: none;/*文字装飾を消す*/ font-weight: bold;/*太文字に*/}
+    nav a {transition: background 0.5s;/*~s　で何秒間で後ろの"a:hover"の部分の変化をさせるか*/}  nav a:hover/*変化させるところを指定する分*/ {background: #b7cea4;/*後ろの色をこれに*/  color: rgb(255, 255, 255);/*文字の色指定*/}
+    nav a {cursor: pointer;/*マウスポインターを押す奴に変える*/} 
+    nav a.a-roughly {padding: 10px 200px;/*縦に10px・横に200px伸ばす*/}
+    nav a.rh-1 {border-radius: 10px 0 0 0;}
+    nav a.rh-2 {border-radius: 0 10px 0 0;}
+    nav a.a-detailed { padding: 15px 128px;/*縦に15px・横に128px伸ばす*/}
+  
+
+
+
+    nav a.active {background: #b7cea4;  color: rgb(255, 255, 255);  }/*開いてるページに実行*/
+    /*"終了"~ナビゲーション設定~"終了"*/
+
+  </style>
+</head>
+<body>
+  <header><h1 style="text-align: center;">つぶ鯖コマンドwiki</h1></header> <!--ヘッダー　一番上のあれよあれ-->
+  
+  <!--ナビゲーション-->
+  <br>
+  <nav >
+    <a class="rh-1 a-roughly" onclick="showPage('top-page')">トップ</a>
+    <a class="rh-2 a-roughly" onclick="showPage('server-pege')">つぶ鯖とは</a>
+  </nav>
+  <nav>
+    <a class="a-detailed" onclick="showPage('guide-page')">ガイド</a>
+    <a class="a-detailed" onclick="showPage('rules-page')">ルール</a>
+    <a class="a-detailed" onclick="showPage('news-page')">ニュース</a>
+  </nav>
+
+
+
+<!--ページ内容-->
+  
+  <!--トップ-->
+  <main id="top-page" class="page active">
+    <br><br><br>
+    <h2 class="top_1" style="text-align: center; font-weight: bold; color: #000000; " >WELCOME TO TUBUSABA-COMMAND<p style="font-weight: normal; color: #3a3a3a;">つぶ鯖での独自コマンドおよび機能の説明</p></h2>
+    <br><br><br>
+    <p>これは実験でのものです</p>
+
+  <!--つぶ鯖とは-->
+  </main>
+  <main id="server-pege" class="page">
+    <h2>ガイド</h2>
+    <p>Wikiの使い方メモ</p>
+  </main>
+  
+  <!--ガイド-->
+  </main>
+  <main id="guide-page" class="page">
+    <header><h1>DonchanikiWiki</h1></header> <!--ヘッダー　一番上のあれよあれ-->
+    <h2>ガイド</h2>
+    <p>Wikiの使い方メモ</p>
+  </main>
+  
+  <!--ルール-->
+  <main id="rules-page" class="page">
+    <header><h1>DonchanikiWiki</h1></header> <!--ヘッダー　一番上のあれよあれ-->
+    <h2>ルール</h2>
+    <p>決めごとを書いておく</p>
+  </main>
+  
+  <!--ニュース-->
+  <main id="news-page" class="page">
+    <header><h1>DonchanikiWiki</h1></header> <!--ヘッダー　一番上のあれよあれ-->
+    <h2>ニュース</h2>
+    <p>最近の更新をメモ</p>
+  </main>
+
+
+
+
+  <script>//基本的触るなのjavascript
+    function showPage(id) {
+      
+      
+      //正しく表示するための文
+      
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));//全ページを非表示
+        document.getElementById(id).classList.add('active');//選択したページを表示
+
+      //アクティブなものに色を付けるためなどの文
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));// 全ナビリンクから active クラスを削除
+        event.target.classList.add('active');// クリックされたナビリンクに active クラスを追加
+    }
+  </script>
+</body>
+</html>
